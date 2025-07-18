@@ -1,62 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Monica's Safari Home Co.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Monica's Safari Home Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-  body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #f5f3ee; }
-  header, footer { background-color: #8B5E3C; color: white; padding: 20px 40px; text-align: center; }
-  .logo h1 { margin: 0; font-size: 1.8em; text-align: left; }
-  nav { display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; }
-  nav a { color: white; text-decoration: none; font-weight: 500; }
-  .menu-icon { font-size: 24px; cursor: pointer; display: none; position: absolute; top: 20px; right: 40px; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      background-color: #f7f3ef;
+    }
 
-  @media (max-width: 768px) {
-    nav { display: none; flex-direction: column; background-color: #8B5E3C; position: absolute; top: 70px; right: 20px; padding: 10px; border-radius: 8px; }
-    nav.show { display: flex; }
-    .menu-icon { display: block; color: white; }
-  }
+    header {
+      background-color: #8B5E3C;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
 
-    .products { padding: 40px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .product { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
-    .product img { width: 100%; border-radius: 8px; }
-    .content { padding: 40px; max-width: 800px; margin: auto; line-height: 1.8; text-align: center; }
-    .content a { color: #8B5E3C; text-decoration: none; font-weight: bold; }
+    nav {
+      background-color: #DDC7AA;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #5A3825;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    h2.title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #5A3825;
+      text-decoration: underline wavy #8B5E3C;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .btn {
+      margin: 5px;
+      background-color: #8B5E3C;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    section#about, section#contact {
+      text-align: center;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+    }
   </style>
 </head>
-<body>
 
+<body>
   <header>
-    <div class="logo">
-      <h1>Monica's Safari Home</h1>
-    </div>
-    <div class="menu-icon" onclick="toggleMenu()">&#8942;</div>
-    <nav id="topNav">
-      <a href="../shop/index.html">Shop</a>
-      <a href="../about/index.html">About</a>
-      <a href="../contact/index.html">Contact</a>
-      <a href="#">👤 Login</a>
-      <a href="#" style="background: white; color: #8B5E3C; padding: 6px 12px; border-radius: 6px;">📝 Register</a>
-    </nav>
+    <h1>Monica's Safari Home Co.</h1>
+    <p>Elegant, Affordable Furniture – Delivered to Your Door</p>
   </header>
 
+  <nav>
+    <a href="#shop">Our Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="document.getElementById('loginModal').style.display='flex'">Log In</a>
+    <a href="#" onclick="document.getElementById('registerModal').style.display='flex'">Register</a>
+  </nav>
 
-  <div class="content">
-    <p>Email us at: <a href="mailto:info@monicassafarihome.com">info@monicassafarihome.com</a></p>
-    <p>Phone: +254 113 348572</p>
-    <p>We’re also on WhatsApp. Message us any time!</p>
+  <div class="hero">
+    <h2>Bring the Safari Home</h2>
+    <p>Explore our unique range of furniture inspired by the wild beauty of Africa</p>
   </div>
 
-  <footer><p>&copy; 2025 Monica's Safari Home Co.</p></footer>
+  <section id="shop">
+    <h2 class="title">Our Products</h2>
+    <div class="product-grid">
+      <!-- 12 Product Cards -->
+      <script>
+        const products = [
+          { name: "Bed", img: "https://images.unsplash.com/photo-1600607681906-c2f7c048c7d5" },
+          { name: "Chair", img: "https://images.unsplash.com/photo-1601933470928-c91b939d8dce" },
+          { name: "Sofa", img: "https://images.unsplash.com/photo-1583337130417-3346a1ba66c3" },
+          { name: "Door", img: "https://images.unsplash.com/photo-1598300053495-2f2cc85c1600" },
+          { name: "Window", img: "https://images.unsplash.com/photo-1622495896750-ea78b5d93e6c" },
+          { name: "Dining Table", img: "https://images.unsplash.com/photo-1616628182504-0cbaf55a4c7a" },
+          { name: "Dining Chair", img: "https://images.unsplash.com/photo-1600585152777-4d2ef7c5681f" },
+          { name: "TV Stand", img: "https://unsplash.com/photos/gray-flat-screen-tv-on-white-tv-stand-jfxY9uoMRwM" },
+          { name: "Bookshelf", img: "https://images.unsplash.com/photo-1604686208859-3b6d894203a1" },
+          { name: "Kitchen Cabinet", img: "https://images.unsplash.com/photo-1616627458373-26890e38b7f3" },
+          { name: "Office Desk", img: "https://unsplash.com/photos/brown-wooden-9-piece-office-table-and-chairs-1RT4txDDAbM" },
+          { name: "Stool", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc" },
+        ];
+        products.forEach(p => {
+          document.write(`
+            <div class="product-card">
+              <img src="${p.img}" alt="${p.name}">
+              <h3>${p.name}</h3>
+              <p><strong>Price:</strong> KSh 9,500</p>
+              <p>High-quality ${p.name.toLowerCase()} for comfort and elegance.</p>
+              <a class="btn" href="https://wa.me/254113348572?text=Hello%20Monica%20Safari%20Home,%20I%20would%20like%20to%20buy%20a%20${encodeURIComponent(p.name)}.%20How%20can%20I%20pay%20for%20the%20product?" target="_blank">Add to Cart</a>
+              <a class="btn" href="https://wa.me/254113348572?text=Hello%20Monica%20Safari%20Home,%20I%20would%20like%20to%20buy%20a%20${encodeURIComponent(p.name)}.%20How%20can%20I%20pay%20for%20the%20product?" target="_blank">Buy Now</a>
+            </div>
+          `);
+        });
+      </script>
+    </div>
+  </section>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("topNav");
-      nav.classList.toggle("show");
-    }
-  </script>
+  <section id="about">
+    <h2>About</h2>
+    <p>Monica's Safari Home Co. brings you the essence of Africa with handcrafted furniture designed to blend tradition and modern elegance. We are committed to quality, affordability, and timely delivery across Kenya.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Phone: +254 113 348572</p>
+    <p>Email: info@monicassafarihome.co.ke</p>
+    <p>Location: Utawala, Nairobi, Kenya</p>
+  </section>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h2>Log In</h2>
+      <input type="text" placeholder="Phone Number" style="width:100%;margin-bottom:10px;"><br>
+      <input type="password" placeholder="Password" style="width:100%;margin-bottom:10px;"><br>
+      <button class="btn">Log In</button>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h2>Register</h2>
+      <input type="text" placeholder="Name or Phone Number" style="width:100%;margin-bottom:10px;"><br>
+      <input type="text" placeholder="Location" style="width:100%;margin-bottom:10px;"><br>
+      <input type="password" placeholder="Password" style="width:100%;margin-bottom:10px;"><br>
+      <button class="btn">Register</button>
+    </div>
+  </div>
 
 </body>
+
 </html>
