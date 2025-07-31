@@ -7,21 +7,13 @@
   <title>Monica's Safari Home Co.</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      background-color: #f7f3ef;
-    }
+    body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #f5f3ee; }
+    header, footer { background-color: #8B5E3C; color: white; padding: 20px 40px; text-align: center; }
+    .logo h1 { margin: 0; font-size: 1.8em; text-align: left; }
+    nav { display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; font-weight: 500; }
+    .menu-icon { font-size: 24px; cursor: pointer; display: none; position: absolute; top: 20px; right: 40px; }
 
-    header {
-      background-color: #8B5E3C;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
 
     nav {
       background-color: #DDC7AA;
@@ -137,7 +129,7 @@
   </div>
 
   <section id="shop">
-    <h2 class="title">Our Products</h2>
+    <h2 class="title">Our Products</h2><h2 class="title">Shop Our Products</h2>
     <div class="product-grid">
       <!-- 12 Product Cards -->
       <script>
@@ -152,7 +144,7 @@
           { name: "TV Stand", img: "https://unsplash.com/photos/gray-flat-screen-tv-on-white-tv-stand-jfxY9uoMRwM" },
           { name: "Bookshelf", img: "https://images.unsplash.com/photo-1604686208859-3b6d894203a1" },
           { name: "Kitchen Cabinet", img: "https://images.unsplash.com/photo-1616627458373-26890e38b7f3" },
-          { name: "Office Desk", img: "https://unsplash.com/photos/brown-wooden-9-piece-office-table-and-chairs-1RT4txDDAbM" },
+          { name: "Office Desk", img: "hhttps://www.jumia.co.ke/modern-office-computer-desk-table-home-workstation-324986442.html" },
           { name: "Stool", img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc" },
         ];
         products.forEach(p => {
@@ -172,38 +164,62 @@
   </section>
 
   <section id="about">
-    <h2>About</h2>
-    <p>Monica's Safari Home Co. brings you the essence of Africa with handcrafted furniture designed to blend tradition and modern elegance. We are committed to quality, affordability, and timely delivery across Kenya.</p>
+   <h2>About Us</h2>
+    <p>Monica's Safari Home Co. was founded with a mission to bring stylish and affordable furniture to homes across Kenya. We pride ourselves in offering unique, handpicked furniture pieces that reflect African beauty, comfort, and utility.</p>
+    <p>Based in Utawala, Nairobi, we operate as a local dropshipping company, ensuring fast delivery and smooth Mpesa payment options. We are committed to delivering both quality and value to every home.</p>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Phone: +254 113 348572</p>
-    <p>Email: info@monicassafarihome.co.ke</p>
-    <p>Location: Utawala, Nairobi, Kenya</p>
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Phone:</strong> +254 113 348572</p>
+    <p><strong>Email:</strong> <a href="mailto:info@monicassafarihome.com">info@monicassafarihome.com</a></p>
+    <p><strong>WhatsApp:</strong> Message us today for delivery countrywide!</p>
+    <p><strong>Location:</strong> Utawala, Nairobi, Kenya</p>
   </section>
+
+  <footer><p>&copy; 2025 Monica's Safari Home Co.</p></footer>
 
   <!-- Login Modal -->
-  <div id="loginModal" class="modal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h2>Log In</h2>
-      <input type="text" placeholder="Phone Number" style="width:100%;margin-bottom:10px;"><br>
-      <input type="password" placeholder="Password" style="width:100%;margin-bottom:10px;"><br>
-      <button class="btn">Log In</button>
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login</h2>
+      <input type="tel" placeholder="Phone Number">
+      <input type="password" placeholder="Password">
+      <button>Login</button>
     </div>
   </div>
 
   <!-- Register Modal -->
-  <div id="registerModal" class="modal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal')">&times;</span>
       <h2>Register</h2>
-      <input type="text" placeholder="Name or Phone Number" style="width:100%;margin-bottom:10px;"><br>
-      <input type="text" placeholder="Location" style="width:100%;margin-bottom:10px;"><br>
-      <input type="password" placeholder="Password" style="width:100%;margin-bottom:10px;"><br>
-      <button class="btn">Register</button>
+      <input type="text" placeholder="Full Name">
+      <input type="tel" placeholder="Phone Number">
+      <input type="text" placeholder="Location">
+      <input type="password" placeholder="Password">
+      <button>Register</button>
     </div>
   </div>
 
-</body>
+  <script>
+    function toggleMenu() {
+      document.getElementById("topNav").classList.toggle("show");
+    }
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+    window.onclick = function(event) {
+      const login = document.getElementById('loginModal');
+      const register = document.getElementById('registerModal');
+      if (event.target === login) login.style.display = "none";
+      if (event.target === register) register.style.display = "none";
+    }
+  </script>
 
+</body>
 </html>
